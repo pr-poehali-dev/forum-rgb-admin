@@ -273,3 +273,202 @@ textarea:focus {
   justify-content: center;
   font-size: 22px;
 }
+
+/* ========== RGB / RAINBOW ========== */
+
+@keyframes rainbow-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes rgb-color-cycle {
+  0% {
+    color: #ff0080;
+  }
+  14% {
+    color: #ff6600;
+  }
+  28% {
+    color: #ffcc00;
+  }
+  42% {
+    color: #00ff88;
+  }
+  57% {
+    color: #00ccff;
+  }
+  71% {
+    color: #aa00ff;
+  }
+  85% {
+    color: #ff0099;
+  }
+  100% {
+    color: #ff0080;
+  }
+}
+
+@keyframes rgb-border-cycle {
+  0% {
+    border-color: #ff0080;
+    box-shadow:
+      0 0 14px #ff008060,
+      0 0 28px #ff008025;
+  }
+  16% {
+    border-color: #ff6600;
+    box-shadow:
+      0 0 14px #ff660060,
+      0 0 28px #ff660025;
+  }
+  33% {
+    border-color: #ffcc00;
+    box-shadow:
+      0 0 14px #ffcc0060,
+      0 0 28px #ffcc0025;
+  }
+  50% {
+    border-color: #00ff88;
+    box-shadow:
+      0 0 14px #00ff8860,
+      0 0 28px #00ff8825;
+  }
+  66% {
+    border-color: #00ccff;
+    box-shadow:
+      0 0 14px #00ccff60,
+      0 0 28px #00ccff25;
+  }
+  83% {
+    border-color: #aa00ff;
+    box-shadow:
+      0 0 14px #aa00ff60,
+      0 0 28px #aa00ff25;
+  }
+  100% {
+    border-color: #ff0080;
+    box-shadow:
+      0 0 14px #ff008060,
+      0 0 28px #ff008025;
+  }
+}
+
+@keyframes rgb-logo-anim {
+  0% {
+    background: linear-gradient(135deg, #ff0080, #ff6600);
+    box-shadow: 0 0 16px #ff008070;
+  }
+  25% {
+    background: linear-gradient(135deg, #00ff88, #00ccff);
+    box-shadow: 0 0 16px #00ff8870;
+  }
+  50% {
+    background: linear-gradient(135deg, #00ccff, #aa00ff);
+    box-shadow: 0 0 16px #00ccff70;
+  }
+  75% {
+    background: linear-gradient(135deg, #aa00ff, #ff0099);
+    box-shadow: 0 0 16px #aa00ff70;
+  }
+  100% {
+    background: linear-gradient(135deg, #ff0080, #ff6600);
+    box-shadow: 0 0 16px #ff008070;
+  }
+}
+
+@keyframes rgb-glow-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 24px #ff008055,
+      0 0 48px #ff008020;
+  }
+  25% {
+    box-shadow:
+      0 0 24px #00ff8855,
+      0 0 48px #00ff8820;
+  }
+  50% {
+    box-shadow:
+      0 0 24px #00ccff55,
+      0 0 48px #00ccff20;
+  }
+  75% {
+    box-shadow:
+      0 0 24px #aa00ff55,
+      0 0 48px #aa00ff20;
+  }
+}
+
+@keyframes admin-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Utility classes */
+.rainbow-bg {
+  background: linear-gradient(
+    270deg,
+    #ff0080,
+    #ff6600,
+    #ffcc00,
+    #00ff88,
+    #00ccff,
+    #aa00ff,
+    #ff0080
+  );
+  background-size: 400% 400%;
+  animation: rainbow-shift 4s ease infinite;
+}
+
+.rainbow-text {
+  background: linear-gradient(
+    270deg,
+    #ff0080,
+    #ff6600,
+    #ffcc00,
+    #00ff88,
+    #00ccff,
+    #aa00ff,
+    #ff0080
+  );
+  background-size: 400% 400%;
+  animation: rainbow-shift 4s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.rgb-text {
+  animation: rgb-color-cycle 3s linear infinite;
+  font-weight: 700;
+}
+
+.rgb-border {
+  border: 2px solid #ff0080;
+  animation: rgb-border-cycle 3s linear infinite;
+}
+
+.rgb-logo {
+  animation: rgb-logo-anim 3s ease-in-out infinite;
+}
+
+.rgb-glow {
+  animation: rgb-glow-pulse 3s ease-in-out infinite;
+}
+
+.admin-live {
+  animation: admin-pulse 1.5s ease-in-out infinite;
+}
