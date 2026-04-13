@@ -1,28 +1,28 @@
+import { useState } from 'react';
+import ForumHome from './pages/ForumHome';
+import ForumCategory from './pages/ForumCategory';
+import ForumTopic from './pages/ForumTopic';
+import ForumProfile from './pages/ForumProfile';
+import ForumNew from './pages/ForumNew';
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+export type Page =
+  | { name: 'home' }
+  | { name: 'category'; id: string; title: string; emoji: string }
+  | { name: 'topic'; id: string; title: string; category: string }
+  | { name: 'profile'; username: string }
+  | { name: 'new' };
 
-const queryClient = new QueryClient();
+export default function App() {
+  const [page, setPage] = useState<Page>({ name: 'home' });
+  const go = (p: Page) => setPage(p);
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
-
-export default App;
+  return (
+    <div className="min-h-screen mesh-bg font-golos">
+      {page.name === 'home' && <ForumHome go={go} />}
+      {page.name === 'category' && <ForumCategory page={page} go={go} />}
+      {page.name === 'topic' && <ForumTopic page={page} go={go} />}
+      {page.name === 'profile' && <ForumProfile page={page} go={go} />}
+      {page.name === 'new' && <ForumNew go={go} />}
+    </div>
+  );
+}
