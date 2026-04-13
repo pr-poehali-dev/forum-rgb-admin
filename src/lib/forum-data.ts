@@ -54,3 +54,5 @@ export const TOPIC_POSTS = [
 ];
 
 export const ONLINE_USERS = ['GamerPro', 'TechNerd', 'PixelQueen', 'SkyWalker99', 'MusicFan88', 'WanderlustK'];
+
+export const FORUM_VERSION = '1.0.1';
